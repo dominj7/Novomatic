@@ -14,7 +14,7 @@ private:
     float angle;
 
 public:
-    Polygon(std::array<SDL_Vertex, N>, SDL_Color);
+    Polygon(std::array<SDL_Vertex, N>);
     void move(float, float, ssize_t = -1);
     void rotate(bool);
     void setColor(SDL_Color);

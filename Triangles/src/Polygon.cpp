@@ -2,9 +2,8 @@
 
 
 template <size_t N>
-Polygon<N>::Polygon(std::array<SDL_Vertex, N> v, SDL_Color c) {
+Polygon<N>::Polygon(std::array<SDL_Vertex, N> v) {
     vertices = v;
-    setColor(c);
     angle = 0.0f;
     calcCenter();
 }
