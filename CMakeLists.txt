@@ -3,3 +3,4 @@ project(Novomatic)
 
 add_subdirectory(Triangles)
 add_subdirectory(Pixel)
+add_subdirectory(Strings)
