@@ -14,6 +14,7 @@ public:
     void testString();
     void testVector();
     void testList();
+    void testArray();
 };
 
 

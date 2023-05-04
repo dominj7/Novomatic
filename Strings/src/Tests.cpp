@@ -83,3 +83,44 @@ void Tests::testList() {
     CPPUNIT_ASSERT(l1 == l3);
     CPPUNIT_ASSERT(l2 == l3);
 }
+
+
+void Tests::testArray() {
+    std::array<char, 3> a1({',', '\0', '.'});
+    std::array<char, 3> a2({' ', 'X', '.'});
+    std::array<char, 3> a3({'s', 'S', '.'});
+
+    CPPUNIT_ASSERT(a1 != a2);
+    CPPUNIT_ASSERT(a1 != a3);
+    CPPUNIT_ASSERT(a2 != a3);
+    cutString(&a3, isLowercase());
+    CPPUNIT_ASSERT(a1 != a2);
+    CPPUNIT_ASSERT(a1 != a3);
+    CPPUNIT_ASSERT(a2 != a3);
+    cutString(&a3, isUppercase());
+    CPPUNIT_ASSERT(a1 != a2);
+    CPPUNIT_ASSERT(a1 != a3);
+    CPPUNIT_ASSERT(a2 != a3);
+    cutString(&a2, isWhitespace());
+    CPPUNIT_ASSERT(a1 != a2);
+    CPPUNIT_ASSERT(a1 != a3);
+    CPPUNIT_ASSERT(a2 != a3);
+    cutString(&a2, isUppercase());
+    CPPUNIT_ASSERT(a1 != a2);
+    CPPUNIT_ASSERT(a1 != a3);
+    CPPUNIT_ASSERT(a2 == a3);
+    cutString(&a2, [](char c){return c == '.';});
+    CPPUNIT_ASSERT(a1 != a2);
+    CPPUNIT_ASSERT(a1 != a3);
+    CPPUNIT_ASSERT(a2 != a3);
+    cutString(&a1, [](char c){return c == '.' or c == ',';});
+    CPPUNIT_ASSERT(a1 == a2);
+    CPPUNIT_ASSERT(a1 != a3);
+    CPPUNIT_ASSERT(a2 != a3);
+    cutString(&a3, [](char c){return c == '.' or c == ',';});
+    CPPUNIT_ASSERT(a1 == a2);
+    CPPUNIT_ASSERT(a1 == a3);
+    CPPUNIT_ASSERT(a2 == a3);
+
+}
+
